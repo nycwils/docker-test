@@ -100,7 +100,7 @@
                     </span>
 		        </h1>
                 <h1><span id = "ipaddress"></span></h1><br>
-                <h5>everything you need to build your personal portfolio<?php echo 'is php working???????'; ?></h5><br>
+                <h5><?php echo "Is server side stuffs working??? ?></h5><br>
 		    <h1>Your server IP address is <?php echo $_SERVER['SERVER_ADDR']; ?>.</h1>
             </div>
 
