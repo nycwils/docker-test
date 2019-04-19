@@ -1,0 +1,8 @@
+sudo: required
+services:
+  - docker #automatically install docker into our container
+before_install:
+  - docker build -t nyuwilson/aws-training -f Dockerfile . # build our docker image before the build runs
+
+#contains all commands needed to run
+#script: 
