@@ -20,7 +20,7 @@ node {
     stage("Push image") {
 
         docker.withRegistry("https://registry.hub.docker.com", "7bab3828-ca26-494d-ba90-908e3f3c1625") {
-            app.push("$(env.BUILD_NUMBER)")
+            app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
             echo "trying to push docker build to dockerhub"
