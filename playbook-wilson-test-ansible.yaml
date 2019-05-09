@@ -1,0 +1,73 @@
+-
+  name: running docker image on EC2s
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+#    - name: Install pip
+#      apt: name=python-pip state=present
+
+#    - name: install docker-py
+#      pip: name=docker-py
+    - name: configure / Update yum packages
+      yum:
+        name: '*'
+        state: latest
+        update_cache: yes
+
+    - name: install docker
+      yum:
+        name='docker'
+        state=latest
+
+    - name: service docker
+      service:
+        name=docker
+        state=started
+        enabled=yes
+
+    - name: Start docker docker_container
+      docker_container:
+        name: nyuwilson
+        image: nyuwilson/wilson:jenkinsdockerpush
+        ports:
+          - "80:80"
+
+#    - name: Builder Docker image from DockerFile
+#      docker_image:
+#        name: nyuwilson
+#        path: nyuwilson/wilson:jenkinsdockerpush
+#        state: build
+
+#    - name: Running the docker_container
+#      docker_container:
+#        image: nyuwilson/wilson:jenkinsdockerpush
+#        path: nyuwilson/wilson:jenkinsdockerpush
+#        state: running
+
+    - name: check if docker is Running
+      shell: docker ps
+
+
+
+#    - pip:
+#        name: docker
+#      become: True
+
+#    - docker_container:
+#        name: nyuwilson
+#        image: nyuwilson/wilson:jenkinsdockerpush
+#        state: started
+#        ports:
+#        - "8080:80"
+#        tty: true
+#        detach: true
+
+
+#    - docker_container:
+#        name: nyuwilson
+#        docker_image: nyuwilson/wilson:jenkinsdockerpush
+#        command: sudo docker run -d -p
+#        ports: "8080:80"
+
+#sudo docker run -d -p 8080:80 nyuwilson/wilson:jenkinsdockerpush

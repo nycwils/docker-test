@@ -1,0 +1,1 @@
+target1 ansible_host=ec2-user@3.93.218.251 ansible_ssh_private_key_file=/Users/wl41/Desktop/AWS\ Excerise\ Files/SSH/Wilson-Test-EC2KeyPair.pem
