@@ -5,6 +5,13 @@ node {
         checkout scm
     }
 
+    ansiblePlaybook(
+        playbook: './playbook-wilson-test-ansible.yaml',
+        inventory: './inventory.txt', 
+        //credentialsId: 'sample-ssh-key', 
+        //extras: '-e parameter="some value"')
+    )
+
     stage("Build image") {
         //this builds the docker image
         app = docker.build("nyuwilson/wilson:jenkinsdockerpush")
