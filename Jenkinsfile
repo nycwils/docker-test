@@ -12,25 +12,25 @@ node {
         //extras: '-e parameter="some value"')
     )
 
-    stage("Build image") {
-        //this builds the docker image
-        app = docker.build("nyuwilson/wilson:jenkinsdockerpush")
-    }
+    // stage("Build image") {
+    //     //this builds the docker image
+    //     app = docker.build("nyuwilson/wilson:jenkinsdockerpush")
+    // }
 
-    stage("Test image") {
+    // stage("Test image") {
 
-        app.inside {
-            echo "Test passed"
-        }
-    }
+    //     app.inside {
+    //         echo "Test passed"
+    //     }
+    // }
 
-    stage("Push image") {
+    // stage("Push image") {
 
-        docker.withRegistry("https://registry.hub.docker.com", "7bab3828-ca26-494d-ba90-908e3f3c1625") {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-        }
-            echo "trying to push docker build to dockerhub"
-    }
+    //     docker.withRegistry("https://registry.hub.docker.com", "7bab3828-ca26-494d-ba90-908e3f3c1625") {
+    //         app.push("${env.BUILD_NUMBER}")
+    //         app.push("latest")
+    //     }
+    //         echo "trying to push docker build to dockerhub"
+    // }
 
 }
