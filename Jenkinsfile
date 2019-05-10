@@ -8,10 +8,12 @@ node {
     stage("Build image") {
 
        
-       echo " hi"
-       sh "cat $mySecretFile >> mySecretFile.pem"
-       sh "chmod 0400 mySecretFile.pem"
-       sh "ssh ec2-user@3.93.218.251 -i mySecretFile.pem -o 'StrictHostKeyChecking=no'" 
+       withCredentials([usernameColonPassword(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'USERPASS')]) {
+        sh '''
+        set +x
+        curl -u "$USERPASS" https://private.server/ > output
+        '''
+  }
 
         // dir('subdir') {
         // withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'FILE')]) {
@@ -46,3 +48,5 @@ node {
   
 
 }
+
+
