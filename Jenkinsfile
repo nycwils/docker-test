@@ -7,13 +7,21 @@ node {
 
     stage("Build image") {
 
-        dir('subdir') {
+         ws {
         withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'FILE')]) {
         sh 'use $FILE'
         sh "ec2-user@3.93.218.251 -i $FILE -o 'StrictHostKeyChecking=no' 'pwd; cd /var/www/html;'"
-         set +x
+        set +x
             }
         }
+
+        // dir('subdir') {
+        // withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'FILE')]) {
+        // sh 'use $FILE'
+        // sh "ec2-user@3.93.218.251 -i $FILE -o 'StrictHostKeyChecking=no' 'pwd; cd /var/www/html;'"
+        //  set +x
+        //     }
+        // }
 
         //this builds the docker image
         //app = docker.build("nyuwilson/wilson:jenkinsdockerpush")
@@ -40,3 +48,4 @@ node {
   
 
 }
+
