@@ -11,7 +11,8 @@ node {
             sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls;'"
             sh "pwd"
             sh "ls"
-            sh "ansible-playbook playbook-wilson-test-ansible.yaml"
+            sh "scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
+            //sh "ansible-playbook playbook-wilson-test-ansible.yaml"
         }
 
         // dir('subdir') {
