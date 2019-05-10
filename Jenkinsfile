@@ -13,7 +13,9 @@ node {
             sh "ls"
             sh "scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
             sh "cd /home/ec2-user"
-            sh "ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt"
+            sh "pwd"
+            sh "pwd"
+            //sh "ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt"
         }
 
         // dir('subdir') {
