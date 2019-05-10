@@ -7,12 +7,12 @@ node {
 
     stage("Build image") {
 
-       
-       withCredentials([usernameColonPassword(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'USERPASS')]) {
-        sh '''
-        set +x
-        curl -u "$USERPASS" https://private.server/ > output
-        '''
+            withCredentials([string(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'TOKEN')]) {
+            sh '''
+            set +x
+            curl -H "Token: $TOKEN" https://some.api/
+            '''
+        }
   }
 
         // dir('subdir') {
@@ -48,5 +48,3 @@ node {
   
 
 }
-
-
