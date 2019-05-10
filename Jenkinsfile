@@ -11,7 +11,7 @@ node {
             sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls;'"
             sh "pwd"
             sh "ls"
-            sh "scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
+            sh "sudo scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
             //sh "cd /home/ec2-user"
             sh "pwd"
             sh "pwd"
