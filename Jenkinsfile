@@ -8,10 +8,10 @@ node {
     stage("Build image") {
 
         withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'mySecretKey')]){
-            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls;'"
-            sh "pwd"
-            sh "ls"
-            sh "cd /home/ec2-user"
+            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd;'"
+            //sh "pwd"
+            //sh "ls"
+            //sh "cd /home/ec2-user"
             //sh "scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
             //sh "cd /home/ec2-user"
             //sh "ls"
@@ -51,3 +51,4 @@ node {
   
 
 }
+
