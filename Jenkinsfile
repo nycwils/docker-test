@@ -14,9 +14,9 @@ node {
 
     stage("Test image") {
 
-        app.inside {
-            echo "Test passed"
-        }
+        echo "Hello"
+        sh "echo hello2 from the shell2"
+       
     }
 
   
