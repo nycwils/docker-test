@@ -8,7 +8,7 @@ node {
     stage("Build image") {
 
         withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'mySecretKey')]){
-            sh "ec2-user@3.93.218.251 -i \$mySecretKey.pem -o 'StrictHostKeyChecking=no' 'pwd; cd /var/www/html;'"
+            sh "ec2-user@3.93.218.251 -i \$mySecretKey.pem -o 'StrictHostKeyChecking=no' 'ls;'"
         }
 
         // dir('subdir') {
@@ -44,4 +44,3 @@ node {
   
 
 }
-
