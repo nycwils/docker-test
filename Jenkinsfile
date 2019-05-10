@@ -7,8 +7,8 @@ node {
 
     stage("Build image") {
 
+                withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'FILE')]) {
             dir('subdir') {
-            withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'FILE')]) {
             sh 'use $FILE'
             }
         }
@@ -46,5 +46,3 @@ node {
   
 
 }
-
-
