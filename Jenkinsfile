@@ -7,11 +7,10 @@ node {
 
     stage("Build image") {
 
-            withCredentials([string(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'TOKEN')]) {
-            sh '''
-            set +x
-            curl -H "Token: $TOKEN" https://some.api/
-            '''
+            dir('subdir') {
+            withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'FILE')]) {
+            sh 'use $FILE'
+            }
         }
 
         // dir('subdir') {
@@ -47,3 +46,5 @@ node {
   
 
 }
+
+
