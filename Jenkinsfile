@@ -8,7 +8,7 @@ node {
     stage("Build image") {
 
         withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'mySecretKey')]){
-            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html; git clone https://github.com/nycwils/aws-training.git .; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt;'"
+            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html;sudo git clone https://github.com/nycwils/aws-training.git .; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt;'"
 
             //sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt;'"
             //sh "pwd"
