@@ -12,7 +12,7 @@ node {
             //this should build the docker image  
             //sh "scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
             
-            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'sudo docker pull nyuwilson/wilson:jenkinsdockerpush ;  sudo docker run -d -p 8080:80 nyuwilson/wilson:jenkinsdockerpush'"
+            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'sudo docker build -d -p 8080:80 nyuwilson/wilson:jenkinsdockerpush'"
 
             //sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html;sudo git pull; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt; 'StrictHostKeyChecking=no';'"
 
@@ -51,12 +51,15 @@ node {
 
     }
 
-    stage("Build Ancible") {
+    stage("Run Ancible Playbook") {
 
-        echo "Hello"
-        sh "echo hello2 from the shell2"
-        sh "'ls; pwd; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt; 'StrictHostKeyChecking=no';'"
+        //echo "Hello"
+        //sh "echo hello2 from the shell2"
+        //sh "'ls; pwd; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt; 'StrictHostKeyChecking=no';'"
+         withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'mySecretKey')]){
+            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt; 'StrictHostKeyChecking=no';'"
 
+        }
        
     }
 
