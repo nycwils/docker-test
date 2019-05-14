@@ -7,12 +7,16 @@ node {
 
     stage("Build Docker") {
 
-        withCredentials([file(credentialsId: '92045f3a-fdb3-491e-ad2e-d6b9fe7aa3e5', variable: 'mySecretKey')]){
+        withCredentials([file(credentialsId: 'wilson-docker-hub', variable: 'dockerHubPassword')]){
             
             //this should build the docker image  
+            sh " docker login --username=nyuwilson --password=$dockerHubPassword"
+            sh "docker build -t nyuwilson/wilson:jenkinsdockerpush ."
+            sh "docker push nyuwilson/wilson"
+
             //sh "scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
             
-            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'sudo docker build -t nyuwilson/wilson:jenkinsdockerpush .'"
+            //sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'sudo docker run -d -p 8080:80 nyuwilson/wilson:jenkinsdockerpush'"
 
             //sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html;sudo git pull; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt; 'StrictHostKeyChecking=no';'"
 
