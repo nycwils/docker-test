@@ -12,7 +12,7 @@ node {
             //this should build the docker image  
             //sh "scp -i $mySecretKey \$mySecretKey ec2-user@3.93.218.251:/home/ec2-user"
             
-            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'sudo docker build -t nyuwilson/wilson:jenkinsdockerpush'"
+            sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'sudo docker build -t nyuwilson/wilson:jenkinsdockerpush .'"
 
             //sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html;sudo git pull; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt; 'StrictHostKeyChecking=no';'"
 
