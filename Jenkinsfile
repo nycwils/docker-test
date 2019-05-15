@@ -71,6 +71,7 @@ node('master') {
             sh "pwd"
             sh "cp \$mySecretKey /var/lib/jenkins/workspace/test-wilson-aws-training-pipeline"
             sh "ls"
+            sh "ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt"
         }
        
     }
@@ -78,4 +79,3 @@ node('master') {
   
 
 }
-
