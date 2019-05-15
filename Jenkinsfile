@@ -16,6 +16,9 @@ node {
         //echo USERNAME
         // or inside double quotes for string interpolation
         echo "username is $USERNAME"
+              sh " docker login --username=nyuwilson --password=$dockerHubPassword"
+              sh "docker build -t nyuwilson/wilson:jenkinsdockerpush ."
+              sh "docker push nyuwilson/wilson"
         }
 
         // withCredentials([string(credentialsId: 'wilson-docker-hub', variable: 'dockerHubPassword')]) {
@@ -74,4 +77,3 @@ node {
   
 
 }
-
