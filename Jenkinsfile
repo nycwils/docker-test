@@ -7,13 +7,13 @@ node {
 
     stage("Build Docker") {
 
-        ws {
-    withCredentials([file(credentialsId: 'wilson-docker-hub', variable: 'dockerHubPassword')]) {
-             sh " docker login --username=nyuwilson --password=$dockerHubPassword"
+        withCredentials([string(credentialsId: 'wilson-docker-hub', variable: 'dockerHubPassword')]) {
+           sh " docker login --username=nyuwilson --password=$dockerHubPassword"
              sh "docker build -t nyuwilson/wilson:jenkinsdockerpush ."
              sh "docker push nyuwilson/wilson"
-            }
         }
+
+     
 
         // withCredentials([file(credentialsId: 'wilson-docker-hub', variable: 'dockerHubPassword')]){
             
