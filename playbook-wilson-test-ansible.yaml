@@ -20,6 +20,7 @@
       yum:
         name='docker'
         state=latest
+        
     - name: pull docker image
       docker_image: 
         name: nyuwilson/wilson:jenkinsdockerpush 
