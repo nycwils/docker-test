@@ -4,11 +4,12 @@
   become: yes
   become_method: sudo
   tasks:
-#    - name: Install pip
-#      apt: name=python-pip state=present
+    - name: Install pip
+      apt: name=python-pip state=present
 
-#    - name: install docker-py
-#      pip: name=docker-py
+    - name: install docker-py
+      pip: name=docker-py
+
     - name: configure / Update yum packages
       yum:
         name: '*'
