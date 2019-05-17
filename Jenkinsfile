@@ -73,8 +73,6 @@ node('master') {
             sh "rm Wilson-Test-EC2KeyPair.pem"
             sh "cp \$mySecretKey /var/lib/jenkins/workspace/test-wilson-aws-training-pipeline"
             sh "ls"
-            sh "sudo pip install --upgrade pip"
-            sh "sudo pip install docker"
             sh "ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt"
         }
        
