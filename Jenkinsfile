@@ -70,6 +70,7 @@ node('master') {
             //sh "ssh ec2-user@3.93.218.251 -i \$mySecretKey -o 'StrictHostKeyChecking=no' 'ls; pwd; pwd; cd /var/www/html; pwd; ls; ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt; 'StrictHostKeyChecking=no';'"
             sh "pwd"
             sh "pwd"
+            sh "rm Wilson-Test-EC2KeyPair.pem"
             sh "cp \$mySecretKey /var/lib/jenkins/workspace/test-wilson-aws-training-pipeline"
             sh "ls"
             sh "ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt"
