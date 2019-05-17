@@ -7,6 +7,7 @@ node('master') {
 
     stage("Build Docker") {
 
+        deleteDir()
 
         withCredentials([usernamePassword(credentialsId: 'wilson-docker-hub', usernameVariable: 'USERNAME', passwordVariable: 'dockerHubPassword')]) {
       
