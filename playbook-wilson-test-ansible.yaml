@@ -39,7 +39,7 @@
         name: nyuwilson
         image: nyuwilson/wilson:jenkinsdockerpush
         ports:
-          - "80:80"
+          - "8080:80"
 
 #    - name: Builder Docker image from DockerFile
 #      docker_image:
