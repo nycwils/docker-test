@@ -20,10 +20,9 @@
         name='docker'
         state=latest
 
-    - name: pull docker image
-      docker_image: 
-        name: nyuwilson/wilson:jenkinsdockerpush 
-        source: pull
+    - name: pull an image
+      docker_image:
+        name: nyuwilson/wilson:jenkinsdockerpush
 
     - name: stop all docker containers
       shell: docker stop $(docker ps -a -q)
