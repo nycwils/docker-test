@@ -4,12 +4,19 @@
   become: yes
   become_method: sudo
   tasks:
-  #  - name: Install pip
-  #    apt: name=python-pip state=present
+#    - name: Install pip
+#      apt: name=python-pip state=present
 
- #   - name: install docker-py
- #     pip: name=docker-py
- 
+#    - name: install docker-py
+#      pip: name=docker-py
+  - name: Install dependent python modules
+    pip:
+      name: "{{item}}"
+      state: present
+    with_items:
+      - docker-py==1.10.6
+      - docker-compose==1.9.0
+
     - name: configure / Update yum packages
       yum:
         name: '*'
@@ -40,7 +47,7 @@
         name: nyuwilson
         image: nyuwilson/wilson:jenkinsdockerpush
         ports:
-          - "8080:80"
+          - "80:80"
 
 #    - name: Builder Docker image from DockerFile
 #      docker_image:
