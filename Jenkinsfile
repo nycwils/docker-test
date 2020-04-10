@@ -15,9 +15,9 @@ node('master') {
      
         echo "username is $USERNAME"
               sh "docker login --username=nyuwilson --password=$dockerPassword"
-              sh "docker build -t nyuwilson/wilson:jenkinsdockerpush ."
-              sh "docker push nyuwilson/wilson"
-              sh "docker system prune"
+              sh "sudo docker build -t nyuwilson/wilson:jenkinsdockerpush ."
+              sh "sudo docker push nyuwilson/wilson"
+              sh "sudo docker system prune"
         }
 
         // withCredentials([string(credentialsId: 'wilson-docker-hub', variable: 'dockerHubPassword')]) {
