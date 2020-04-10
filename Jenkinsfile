@@ -71,7 +71,7 @@ node('master') {
             sh "pwd"
             sh "pwd"
             //sh "rm wilson-test-pem"
-            sh "cp \$mySecretKey /var/lib/jenkins/workspace/wilson-docker"
+            sh "sudo cp \$mySecretKey /var/lib/jenkins/workspace/wilson-docker"
             sh "ls"
             sh "ansible-playbook playbook-wilson-test-ansible.yaml -i inventory.txt"
         }
