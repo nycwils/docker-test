@@ -9,7 +9,7 @@ node('master') {
 
         
 
-        withCredentials([usernamePassword(credentialsId: 'dockerPassword', usernameVariable: 'USERNAME', passwordVariable: 'dockerPassword')]) {
+        withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'USERNAME', passwordVariable: 'dockerPassword')]) {
       
         sh 'echo $PASSWORD'
      
