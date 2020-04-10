@@ -24,7 +24,7 @@
 
     - name: pull an image
       docker_image:
-        name: nyuwilson/wilson:jenkinsdockerpush
+        name: hello-world
 
     - name: stop all docker containers
       shell: docker stop $(docker ps -a -q)
