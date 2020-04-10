@@ -14,7 +14,7 @@ node('master') {
         sh 'echo $PASSWORD'
      
         echo "username is $USERNAME"
-              sh "sudo docker login --username=nyuwilson --password=$dockerPassword"
+              sh "docker login --username=nyuwilson --password=$dockerPassword"
               sh "sudo docker build -t nyuwilson/wilson:jenkinsdockerpush ."
               sh "sudo docker push nyuwilson/wilson"
               sh "sudo docker system prune"
