@@ -17,14 +17,11 @@
         state: latest
         update_cache: yes
 
-    - name: install docker
-      yum:
-        name='docker'
-        state=latest
+
 
     - name: pull an image
       docker_image:
-        name: hello-world
+        name: nyuwilson/wilson:jenkinsdockerpush
 
     - name: stop all docker containers
       shell: docker stop $(docker ps -a -q)
